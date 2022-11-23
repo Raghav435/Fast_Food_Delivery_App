@@ -1,99 +1,43 @@
-const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
-const { Role } = require("../models/role.model");
 const TemporalUser = require("../models/temporalUser.model");
+const { ROLES } = require("../models/role.model");
 
-const verifyToken = async (req, res, next) => {
+const checkDuplicatedEmail = async (req, res, next) => {
   try {
-    let token;
+    const user = await User.findOne({ email: req.body.email });
+    if (user)
+      return res.status(400).json({ message: "The email already exists" });
 
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer")
-    ) {
-      token = req.headers.authorization.split(" ")[1];
-    }
+    const tempUser = await TemporalUser.findOne({ email: req.body.email });
 
-    if (!token) return res.status(401).json({ message: "No token provided" });
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-
-    req.userId = decoded.id;
-
-    const user = await User.findById(req.userId, { password: 0 });
-
-    if (!user) return res.status(404).json({ message: "No user found" });
+    if (tempUser)
+      return res.status(302).json({
+        successful: false,
+        message: "Email unverified",
+        redirect: `/#/authentication/confirmation`,
+        id: tempUser._id,
+      });
 
     next();
-  } catch (err) {
-    console.log(err);
-    res.status(401).json({ message: "Unauthorized" });
-  }
-};
-
-const isModerator = async (req, res, next) => {
-  try {
-    const user = await User.findById(req.userId);
-    const roles = await Role.find({ _id: { $in: user.roles } });
-
-    for (let i = 0; i < roles.length; i++) {
-      if (roles[i].name === "moderator") {
-        next();
-        return;
-      }
-    }
-    return res.status(403).json({ message: "Require Moderator Role!" });
   } catch (error) {
-    console.log(error);
-    return res
+    res
       .status(500)
-      .json({ message: "something went wrong , can't verify role" });
+      .json({ success: false, message: "Something went wrong , signup fail" });
   }
 };
 
-const isAdmin = async (req, res, next) => {
-  try {
-    const user = await User.findById(req.userId);
-    const roles = await Role.find({ _id: { $in: user.roles } });
-
-    for (let i = 0; i < roles.length; i++) {
-      if (roles[i].name === "admin") {
-        next();
-        return;
+const checkRolesExisted = (req, res, next) => {
+  if (req.body.roles) {
+    for (let i = 0; i < req.body.roles.length; i++) {
+      if (!ROLES.includes(req.body.roles[i])) {
+        return res.status(400).json({
+          message: `Role ${req.body.roles[i]} does not exist`,
+        });
       }
     }
-
-    return res.status(403).json({ message: "Require Moderator Role!" });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: error });
   }
+
+  next();
 };
 
-const isAdminOrIsModerator = async (req, res, next) => {
-  try {
-    const user = await User.findById(req.userId);
-
-    const roles = await Role.find({ _id: { $in: user.roles } });
-
-    for (let i = 0; i < roles.length; i++) {
-      if (roles[i].name === "moderator" || roles[i].name === "admin") {
-        next();
-        return;
-      }
-    }
-    return res
-      .status(403)
-      .json({ message: "Require Admin or Moderator Role!" });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: error });
-  }
-};
-
-module.exports = {
-  verifyToken,
-  isAdmin,
-  isModerator,
-  isAdminOrIsModerator,
-};
+module.exports = { checkDuplicatedEmail, checkRolesExisted };
