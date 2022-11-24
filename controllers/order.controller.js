@@ -107,3 +107,133 @@ const getAllUserOrders = async (req, res) => {
     });
   }
 };
+
+const createOrder = async (req, res) => {
+  try {
+    const orderResume = req.body;
+    if (!orderResume || orderResume.length < 1)
+      return res
+        .status(400)
+        .json({ successful: false, message: "Order is empty!" });
+
+    const promises = orderResume.map((field) =>
+      Product.findById(field.productId)
+    );
+
+    const productsFound = await Promise.all(promises);
+
+    const areAllProductsFound = productsFound.every(Boolean);
+
+    if (!areAllProductsFound)
+      return res
+        .status(404)
+        .json({ successful: false, message: "No products found" });
+
+    const clientFound = await User.findById(req.userId);
+
+    const orderId = mongoose.Types.ObjectId();
+
+    const order = orderFactory({
+      productsData: productsFound,
+      quantitySpecifications: orderResume,
+      clientId: req.userId,
+      orderId: orderId,
+    });
+
+    const newOrder = new Order(order);
+
+    newOrder.createStates();
+
+    await newOrder.save();
+    await clientFound.addOrder(orderId).save();
+
+    ///socket io notification to admins
+
+    orderEmitter.emit("newOrder", newOrder);
+
+    return res
+      .status(201)
+      .json({ success: true, message: "Order created successfully" });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong, order couldn't be created",
+    });
+  }
+};
+
+const actualizeOrderState = async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id);
+    const clientFound = await User.findById(order.client[0]);
+
+    order.updateOrderState(req.confirmedState);
+
+    if (req.confirmedState === "liquidado") {
+      order.closeOrder();
+      clientFound.setIsClient();
+
+      const promises = order.description.map((item) =>
+        Product.incrementProductSales(item.name, item.quantity)
+      );
+
+      try {
+        await Promise.all(promises);
+      } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+          success: false,
+          message:
+            "Something went wrong, the product sold quantity could not be updated",
+        });
+      }
+    }
+
+    await order.save();
+    await clientFound.save();
+    // notify user about an order actualization
+    orderEmitter.emit("orderActualization", clientFound._id, order);
+
+    return res
+      .status(200)
+      .json({ success: false, message: "order state updated successfully" });
+  } catch (err) {
+    console.log(err);
+
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong, the state couldn't be upgraded",
+    });
+  }
+};
+
+const deleteOrderById = async (req, res) => {
+  try {
+    await Order.findByIdAndRemove(req.orderId);
+
+    const clientFound = await User.findById(req.userId);
+
+    clientFound.deleteOrder(req.orderId).save();
+
+    return res
+      .status(204)
+      .json({ success: true, message: "Order has been deleted" });
+  } catch (err) {
+    console.log(err);
+
+    return res
+      .status(500)
+      .json({ success: false, message: "Order couldn't been deleted" });
+  }
+};
+
+module.exports = {
+  createOrder,
+  getAllOrders,
+  getOrderById,
+  actualizeOrderState,
+  deleteOrderById,
+  getAllUserOrders,
+};
