@@ -1,21 +1,12 @@
-import { POST } from "../utils/http";
-
-const newsletterSubscribtionAPI = async ({ info, setIsSuccessfullySend }) => {
+import { GET } from "../utils/http";
+async function getUsers({ token, setAllUsers }) {
   try {
-    const { response } = await POST("/api/newsletter", info);
+    const { json } = await GET("/api/users", token);
 
-    if (response.status === 200) {
-      setIsSuccessfullySend(true);
-
-      setTimeout(() => {
-        setIsSuccessfullySend(false);
-      }, 3000);
-    }
-    if (response.status === 500)
-      alert("Error en el servidor, vuelva a interntar");
+    setAllUsers(json);
   } catch (err) {
     console.log(err);
   }
-};
+}
 
-export default newsletterSubscribtionAPI;
+export default getUsers;
