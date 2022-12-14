@@ -5,16 +5,16 @@ const {
   createUser,
   updateUserRoleById,
   updateProfileById,
-} = require("../controllers/usersControllers");
-const { verifyToken, isAdmin } = require("../middleware/authJwt");
+} = require("../controllers/users.controller");
+const { verifyToken, isAdmin } = require("../middlwares/authJwt");
 const {
   checkDuplicatedEmail,
   checkRolesExisted,
-} = require("../middleware/verifySignUp");
+} = require("../middlwares/verifySignup");
 const {
   checkIsValidUser,
   checkIsValidUpdate,
-} = require("../middleware/userValidator");
+} = require("../middlwares/userValidator");
 
 router.get("/", [verifyToken], getAllUsers);
 router.get("/:id", [verifyToken], getUserById);

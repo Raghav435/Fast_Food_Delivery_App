@@ -8,11 +8,11 @@ const {
   postNewProduct,
   updateProductById,
   deleteProductById,
-} = require("../controllers/productsControllers");
-const { verifyToken, isAdmin } = require("../middleware/authJwt");
+} = require("../controllers/products.controller");
+const { verifyToken, isAdmin } = require("../middlwares/authJwt");
 
-const checkCategoryExist = require("../middleware/verifyProduct");
-const checkIsValidId = require("../middleware/checkIsValidId");
+const checkCategoryExist = require("../middlwares/verifyProduct");
+const checkIsValidId = require("../middlwares/checkValidid");
 //multer config
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

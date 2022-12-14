@@ -7,21 +7,21 @@ const {
   getOrderById,
   actualizeOrderState,
   deleteOrderById,
-} = require("../controllers/ordersControllers");
+} = require("../controllers/order.controller");
 
 const {
   verifyToken,
   isAdmin,
   isAdminOrIsModerator,
-} = require("../middleware/authJwt");
+} = require("../middlwares/authJwt");
 const {
   checkOrderExist,
   checkProfileState,
   checkAllowedDelete,
   checkAllowedUpdates,
   checkAuthorizedUser,
-} = require("../middleware/verifyOrder");
-const checkIsValidId = require("../middleware/checkIsValidId");
+} = require("../middlwares/verifyOrder");
+const checkIsValidId = require("../middlwares/checkValidid");
 
 router.get("/", [verifyToken, isAdminOrIsModerator], getAllOrders);
 router.post("/", [verifyToken, checkProfileState], createOrder);

@@ -3,14 +3,14 @@ const router = require("express").Router();
 const {
   checkDuplicatedCategory,
   checkCategoryExist,
-} = require("../middleware/verifyCategory");
-const { verifyToken, isAdmin } = require("../middleware/authJwt");
+} = require("../middlwares/verifyCategory");
+const { verifyToken, isAdmin } = require("../middlwares/authJwt");
 const {
   getAllCategories,
   deleteCategory,
   editCategoryName,
   createCategory,
-} = require("../controllers/categoryControllers");
+} = require("../controllers/category.controller");
 
 router.get("/", getAllCategories);
 router.post(

@@ -8,10 +8,10 @@ const {
   resetPassword,
   logout,
   getSession,
-} = require("../controllers/authControllers");
-const { checkDuplicatedEmail } = require("../middleware/verifySignUp");
+} = require("../controllers/auth.controller");
+const { checkDuplicatedEmail } = require("../middlwares/verifySignup");
 
-const { checkIsValidUser } = require("../middleware/userValidator");
+const { checkIsValidUser } = require("../middlwares/userValidator");
 
 router.post("/signup", [checkDuplicatedEmail, checkIsValidUser], signUp);
 router.get("/verification/:token", validateEmailToken);

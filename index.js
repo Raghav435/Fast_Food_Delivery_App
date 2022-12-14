@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config({ path: ".env" });
 const path = require("path");
 const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -11,13 +12,13 @@ app.use(cookieParser());
 app.use(cors());
 app.use(morgan("tiny"));
 
-const productsRouter = require("./routes/products.js");
-const usersRouter = require("./routes/users.js");
-const authRouter = require("./routes/auth.js");
-const contactRouter = require("./routes/contact.js");
-const newsletterRouter = require("./routes/newsletter.js");
-const ordersRouter = require("./routes/orders.js");
-const categoriesRouter = require("./routes/categories.js");
+const productsRouter = require("./routes/product.route");
+const usersRouter = require("./routes/user.route");
+const authRouter = require("./routes/auth.route");
+const contactRouter = require("./routes/contact.route");
+const newsletterRouter = require("./routes/newsletter.route");
+const ordersRouter = require("./routes/order.route");
+const categoriesRouter = require("./routes/categories.route");
 
 app.use("/media", express.static(path.join(__dirname, "storage", "media")));
 
