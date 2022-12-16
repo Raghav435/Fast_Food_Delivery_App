@@ -3,8 +3,8 @@ import React from "react";
 
 import { SkeletonItem } from "./ProductsSectionSkeleton";
 import "swiper/swiper.min.css";
-import "swiper/modules/pagination/pagination";
-import "swiper/modules/navigation/navigation";
+import "swiper/components/pagination/package.json";
+import "swiper/components/navigation/package.json";
 
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
 SwiperCore.use([Pagination, Navigation]);

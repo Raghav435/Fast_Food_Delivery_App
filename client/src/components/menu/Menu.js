@@ -6,7 +6,7 @@ import useMenu from "../../hooks/useMenu";
 import SearchBar from "../MenuSearchBar";
 import SortProductsOptions from "../SortProductsOptions";
 import FilterCategoryOptions from "../FilterCategoryOptions";
-import PaginationButtons from "../PaginationButtons";
+import PaginationButtons from "../PaginationButton";
 import ProductsSectionComponent from "./ProductsSection";
 import SectionTitle from "../SectionTitle";
 const StyledMenu = styled.main`

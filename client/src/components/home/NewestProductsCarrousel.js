@@ -8,8 +8,8 @@ import useNewestProducts from "../../hooks/useNewestProducts";
 import ProductsCarrouselSkeleton from "../ProductsCarrousalSkeleton";
 // Import Swiper styles
 import "swiper/swiper.min.css";
-import "swiper/components/pagination/pagination.min.css";
-import "swiper/components/navigation/navigation.min.css";
+import "swiper/components/pagination/package.json";
+import "swiper/components/navigation/package.json";
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
