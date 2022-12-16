@@ -7,15 +7,15 @@ import {
   RefreshButton,
   RefreshIcon,
   TableWrapper,
-} from "../account/UserOrdersPage";
+} from "../account/UserOrderPage";
 import { LoaderSpinner } from "./../LoaderSpinner";
 import { NotFoundMessage } from "../menu/ProductsSection";
 import SectionTitle from "../SectionTitle";
 import { FiltersBoard } from "./DashboardProducts";
 import FilterOrderStateOptions from "./../FilterOrderStateOptions";
 import SortOrdersOptions from "./../SortOrdersOptions";
-import PaginationButtons from "../PaginationButtons";
-import OrdersTableSkeleton from "../OrdersTableSkeleton";
+import PaginationButtons from "../PaginationButton";
+import OrdersTableSkeleton from "../OrderTableSkeleton";
 
 export const Page = styled.section`
   padding: 60px 05px;

@@ -1,6 +1,6 @@
 import useLoginForm from "../../hooks/useLoginForm";
 import { LoaderSpinner } from "./../LoaderSpinner";
-import { ButtonPrimary } from "../Buttons";
+import { ButtonPrimary } from "../Button";
 import burgerIcon from "../../img/burger-icon.png";
 
 import {

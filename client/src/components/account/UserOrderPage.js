@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
-import useUserOrdersPage from "../../hooks/useUserOrdersPage";
-import { ButtonPrimary } from "../Buttons";
+import useUserOrdersPage from "../../hooks/useUserOrderPage";
+import { ButtonPrimary } from "../Button";
 import SectionTitle from "../SectionTitle";
-import PaginationButtons from "../PaginationButtons";
-import OrdersTableSkeleton from "../OrdersTableSkeleton";
+import PaginationButtons from "../PaginationButton";
+import OrdersTableSkeleton from "../OrderTableSkeleton";
 import refreshIcon from "../../img/refresh.svg";
 import { LoaderSpinner } from "../LoaderSpinner";
 

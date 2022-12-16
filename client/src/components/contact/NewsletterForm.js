@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ErrorMessage } from "./ContactForm";
 import useNewsletterForm from "../../hooks/useNewsletterForm";
-import { Button } from "../Buttons";
+import { Button } from "../Button";
 
 const StyledNewsletter = styled.article`
 box-sizing:border-box:

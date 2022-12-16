@@ -5,7 +5,7 @@ import { LoaderSpinner } from "./../LoaderSpinner";
 import { ErrorMessage } from "../contact/ContactForm";
 import trayIcon from "../../img/tray.svg";
 import { FormCard, Form, Logo } from "../auth/SignupForm";
-import { ButtonPrimary, Button } from "../Buttons";
+import { ButtonPrimary, Button } from "../Button";
 
 export const StyledSection = styled.section`
   position: relative;

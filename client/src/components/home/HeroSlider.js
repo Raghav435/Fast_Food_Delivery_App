@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import useStaticInfoSlider from "../../hooks/useStaticInfoSlider";
-import { ButtonPrimary } from "../Buttons";
+import { ButtonPrimary } from "../Button";
 import BurgerSlide from "../../img/hamburger-slide.jpg";
 import PizzaSlide from "../../img/pizza-slide.jpg";
 import EmpanadaSlide from "../../img/empanadas-slide.jpg";

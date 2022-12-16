@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { LoaderSpinner } from "../LoaderSpinner";
-import { ButtonPrimary } from "../Buttons";
+import { ButtonPrimary } from "../Button";
 import {
   FormCard,
   Form,

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import useContactForm from "../../hooks/useContactForm";
-import SocilasMenu from "../SocialsMenu";
-import { ButtonPrimary } from "../Buttons";
+import SocilasMenu from "../SocialMenu";
+import { ButtonPrimary } from "../Button";
 import phoneIcon from "../../img/phone-alt-solid.svg";
 import emaIlcon from "../../img/envelope-regular.svg";
 

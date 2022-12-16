@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
 import useSignupForm from "../../hooks/useSignupForm";
-import { ButtonPrimary } from "../Buttons";
+import { ButtonPrimary } from "../Button";
 import burgerIcon from "../../img/burger-icon.png";
 import { TextInput, ErrorMessage } from "../contact/ContactForm";
 import { LoaderSpinner } from "../LoaderSpinner";
