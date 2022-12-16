@@ -1,7 +1,7 @@
 import { useHistory, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useStorage } from "../context/useStorage";
-import deleteProductAPI from "../API/deleteProductAPI";
+import deleteProductAPI from "../API/DeleteProductAPI";
 
 export default function useDashboardProducts() {
   const history = useHistory();

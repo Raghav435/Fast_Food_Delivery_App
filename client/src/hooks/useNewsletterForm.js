@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useStorage } from "../context/useStorage";
-import newsletterSubscribtionAPI from "../API/newsletterSubscribtionAPI";
+import newsletterSubscribtionAPI from "../API/newsletterSubscriptionAPI";
 
 export default function useNewsletterForm() {
   const { setIsSuccessfullySend, isLogin } = useStorage();

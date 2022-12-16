@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import SingleCartProduct from "./SingleCartProduct";
-import useShoppingCart from "../../hooks/useShoppingCart";
+import useShoppingCart from "../../hooks/useShoppongCart";
 import { LoaderSpinner } from "./../LoaderSpinner";
 
 const StyledCart = styled.aside`

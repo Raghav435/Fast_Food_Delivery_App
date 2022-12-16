@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Item from "../menu/MenuItem";
 import AddToCartButton from "../AddToCartButton";
 import useNewestProducts from "../../hooks/useNewestProducts";
-import ProductsCarrouselSkeleton from "../ProductsCarrouselSkeleton";
+import ProductsCarrouselSkeleton from "../ProductsCarrousalSkeleton";
 // Import Swiper styles
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";

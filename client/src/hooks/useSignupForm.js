@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import singUpAPI from "../API/singUpAPI";
+import singUpAPI from "../API/signUpAPI";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
