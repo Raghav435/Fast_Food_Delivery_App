@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import useHeader from "../hooks/useHeader";
-import SocialsMenu from "./SocialsMenu";
+import SocialsMenu from "./SocialMenu";
 import logo from "../img/logo.png";
 import menu from "../img/menu.svg";
 import clouseMenu from "../img/close.svg";

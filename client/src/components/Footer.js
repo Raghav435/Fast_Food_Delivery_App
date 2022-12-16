@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SocialMenu from "./SocialsMenu";
+import SocialMenu from "./SocialMenu";
 import logo from "../img/logo.png";
 import locationIcon from "../img/map-marker-alt-solid.svg";
 import phoneIcon from "../img/phone-alt-solid.svg";

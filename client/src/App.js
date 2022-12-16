@@ -9,13 +9,13 @@ import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Footer from "./components/Footer";
 import LoadingPage from "./components/LoadingPage";
-import OrderNotificationPopUp from "./components/OrderNotificationPopUp";
+import OrderNotificationPopUp from "./components/OrderNotificationPopup";
 import Header from "./components/Header";
 import NotFound404Page from "./components/NotFound404Page";
 import SuccessfulFormModal from "./components/SuccessfulFormModal";
 import ShoppingCart from "./components/shopping_cart/ShoppingCart";
 import Login from "./components/auth/Login";
-import SignUp from "./components/auth/SignUp";
+import SignUp from "./components/auth/Signup";
 import DashboardOrderDetails from "./components/dashboard/DashboardOrderDetails";
 import Menu from "./components/menu/Menu";
 import Home from "./components/home/Home";
@@ -23,7 +23,7 @@ import Contact from "./components/contact/Contact";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import MyProfile from "./components/account/MyProfile";
 import EditMyProfile from "./components/account/EditMyProfile";
-import UserOrdersPage from "./components/account/UserOrdersPage";
+import UserOrdersPage from "./components/account/UserOrderPage";
 import UserOrderDetailsPage from "./components/account/UserOrderDetailsPage";
 import DashboardNewProduct from "./components/dashboard/DashboardNewProduct";
 import DashboardCategories from "./components/dashboard/DashboardCategories";
@@ -35,7 +35,7 @@ import DashboardProducts from "./components/dashboard/DashboardProducts";
 const EmailConfirmationModal = lazy(() =>
   import("./components/auth/EmailConfirmationModal")
 );
-const ResetPassword = lazy(() => import("./components/auth/ResetPassword"));
+const ResetPassword = lazy(() => import("./components/auth/ResetPasswod"));
 
 function App() {
   let {
