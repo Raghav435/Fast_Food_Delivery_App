@@ -1,4 +1,4 @@
-const sendEmail = require("../config/nodemailer");
+// const sendEmail = require("../config/nodemailer");
 
 const sendToAdminEmail = async (req, res) => {
   try {
@@ -40,7 +40,7 @@ const sendToAdminEmail = async (req, res) => {
 `,
     };
 
-    await sendEmail(emailOptions);
+    // await sendEmail(emailOptions);
 
     return res.status(200).json({
       successful: true,

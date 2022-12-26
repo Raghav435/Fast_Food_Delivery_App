@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-require("dotenv").config({ path: ".env" });
+require("dotenv").config();
 const path = require("path");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
+const connection = require("./config/db");
+const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

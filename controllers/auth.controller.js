@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const User = require("../models/user.model");
 const TemporalUser = require("../models/temporalUser.model");
 const { Role } = require("../models/role.model");
-require("dotenv").config({ path: ".env" });
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 const sendConfirmationEmailFunction = require("../libs/sendConfirmationEmail");
